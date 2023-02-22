@@ -23,6 +23,11 @@ app.get("/about", (req, res) => {
     title: "About page",
   });
 });
+app.get("/statistic", (req, res) => {
+  res.render("statistic", {
+    title: "Statistic page",
+  });
+});
 
 app.get("/download", (req, res) => {
   res.download("./assets/picture.jpg");
