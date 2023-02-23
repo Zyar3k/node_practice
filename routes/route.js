@@ -1,4 +1,7 @@
 const router = require("express").Router();
+const apiMiddleware = require("../middleware/apiKey.js");
+
+// router.use(apiMiddleware);
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -26,6 +29,19 @@ router.get("/statistic", (req, res) => {
 
 router.get("/download", (req, res) => {
   res.download("./assets/picture.jpg");
+});
+
+router.get("/api/products", apiMiddleware, (req, res) => {
+  res.json([
+    {
+      id: 1,
+      name: "Product 1",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+    },
+  ]);
 });
 
 module.exports = router;
